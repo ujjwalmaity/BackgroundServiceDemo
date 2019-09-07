@@ -56,6 +56,9 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i("Service Demo", "In onStartCommand, thread id: " + Thread.currentThread().getId());
 
+        int val = intent.getIntExtra("value", 0);
+        Log.i("Service Demo", "In onStartCommand, value from activity is: " + val);
+
         isRandomNumberGeneratorON = true;
         new Thread(new Runnable() {
             @Override

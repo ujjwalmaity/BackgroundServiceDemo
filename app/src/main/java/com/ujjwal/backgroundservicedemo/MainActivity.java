@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startBackgroundService(View view) {
+        intent.putExtra("value", 12);
         startService(intent);
     }
 

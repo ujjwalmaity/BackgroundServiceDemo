@@ -8,6 +8,15 @@
     tools:context=".MainActivity">
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
@@ -23,5 +32,29 @@
         android:layout_below="@+id/button"
         android:onClick="stopBackgroundService"
         android:text="Stop Background Service" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:onClick="bindService"
+        android:text="Bind Service" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button3"
+        android:onClick="unbindService"
+        android:text="Unbind Service" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button4"
+        android:onClick="getRandomNumber"
+        android:text="Get Random Number" />
 
 </RelativeLayout>

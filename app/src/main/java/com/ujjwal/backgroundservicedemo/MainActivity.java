@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Intent intent;
+    private Intent intent, intent2;
 
     private ServiceConnection serviceConnection;
     private boolean isServiceBound;
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
         intent = new Intent(getApplicationContext(), MyService.class);
+        intent2 = new Intent(getApplicationContext(), MyIntentService.class);
         textView = findViewById(R.id.textView);
     }
 
@@ -79,5 +80,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             textView.setText("Service not bound");
         }
+    }
+
+    public void startIntentService(View view) {
+        intent2.putExtra("sleepTime", 12);
+        startService(intent2);
     }
 }

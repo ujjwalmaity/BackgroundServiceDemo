@@ -7,6 +7,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.Random;
 
 public class MyService extends Service {
@@ -49,6 +51,7 @@ public class MyService extends Service {
             try {
                 Thread.sleep(1000);
                 randomNumber = new Random().nextInt(MAX) + MIN;
+                EventBus.getDefault().post(new RandomNumberEvent(randomNumber));
                 Log.i("Service Demo", "Thread id: " + Thread.currentThread().getId() + "Random Number: " + randomNumber);
             } catch (InterruptedException e) {
                 Log.i("Service Demo", "Thread Interrupted");

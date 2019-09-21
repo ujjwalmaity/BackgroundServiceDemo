@@ -14,6 +14,8 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     TextView textView;
 
     private Intent intent;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.i("Service Demo", "In MainActivity, thread id: " + Thread.currentThread().getId());
+        Log.i(TAG, "onCreate, thread id: " + Thread.currentThread().getId());
 
         init();
     }
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         textView = findViewById(R.id.textView);
 
-        intent = new Intent(getApplicationContext(), MyService.class);
+        intent = new Intent(getApplicationContext(), MyIntentService.class);
     }
 
     public void stopBackgroundService(View view) {

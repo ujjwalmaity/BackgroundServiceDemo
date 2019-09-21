@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void stopBackgroundService(View view) {
+        stopService(intent);
     }
 
     public void startBackgroundService(View view) {

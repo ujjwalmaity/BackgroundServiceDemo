@@ -7,7 +7,14 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import java.util.Random;
+
 public class MyService extends Service {
+
+    private int randomNumber;
+    private boolean isRandomNumberGeneratorON;
+    private final int MIN = 0;
+    private final int MAX = 100;
 
     @Nullable
     @Override
@@ -17,6 +24,7 @@ public class MyService extends Service {
 
     @Override
     public void onDestroy() {
+        isRandomNumberGeneratorON = false;
         Log.i("Service Demo", "In onDestroy, thread id: " + Thread.currentThread().getId());
         super.onDestroy();
     }
@@ -24,7 +32,27 @@ public class MyService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i("Service Demo", "In onStartCommand, thread id: " + Thread.currentThread().getId());
-        stopSelf(); // Service Cannot be stop from activity, so we stop it from here.
+
+        isRandomNumberGeneratorON = true;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                startRandomNumberGenerator();
+            }
+        }).start();
+
         return super.onStartCommand(intent, flags, startId);
+    }
+
+    private void startRandomNumberGenerator() {
+        while (isRandomNumberGeneratorON) {
+            try {
+                Thread.sleep(1000);
+                randomNumber = new Random().nextInt(MAX) + MIN;
+                Log.i("Service Demo", "Thread id: " + Thread.currentThread().getId() + "Random Number: " + randomNumber);
+            } catch (InterruptedException e) {
+                Log.i("Service Demo", "Thread Interrupted");
+            }
+        }
     }
 }

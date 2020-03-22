@@ -38,7 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button2"
-        android:onClick="bindService"
         android:text="Bind Service" />
 
     <Button
@@ -46,22 +45,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button3"
-        android:onClick="unbindService"
         android:text="Unbind Service" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button4"
-        android:onClick="getRandomNumber"
-        android:text="Get Random Number" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button5"
+        android:layout_below="@+id/button4"
         android:layout_marginTop="80dp"
         android:onClick="startIntentService"
         android:text="Start Intent Service" />
